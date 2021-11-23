@@ -24,7 +24,7 @@ class AuthController extends Controller
     {
         $credentials = $request->only('email', 'password');
 
-        $user = User::select('id', 'first_name', 'last_name', 'email', 'password')->where('email', $credentials['email'])->first();
+        $user = User::select('id', 'name', 'email', 'password')->where('email', $credentials['email'])->first();
 
         if (!$user || !password_verify($credentials['password'], $user->password)) {
             return response()->json([trans('auth_controller_unauthorized')], 401);
