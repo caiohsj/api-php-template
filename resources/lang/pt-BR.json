@@ -1,0 +1,4 @@
+{
+	"middleware_authenticate_unauthorized": "Não autorizado",
+    "auth_controller_unauthorized": "Não autorizado"
+}
