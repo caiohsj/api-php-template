@@ -11,6 +11,7 @@ class Locale
         $locales = [
             'en',
             'pt-BR',
+            'pt_BR',
         ];
 
         if ($request->has('locale') && in_array($request->locale, $locales)) {
