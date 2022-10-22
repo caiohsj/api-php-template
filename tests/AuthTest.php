@@ -5,6 +5,7 @@ use Laravel\Lumen\Testing\DatabaseTransactions;
 
 class AuthTest extends TestCase
 {
+    use DatabaseTransactions;
 
     public function testUnauthorized()
     {
@@ -20,12 +21,14 @@ class AuthTest extends TestCase
 
     public function testAuthorized()
     {
-        $user = [
+        $user_params = [
             'email' => 'johndoe@email.com',
             'password' => 'my_pass'
         ];
 
-        $response = $this->post('/api/v1/sign_in', $user)->response;
+        User::factory()->create($user_params);
+
+        $response = $this->post('/api/v1/sign_in', $user_params)->response;
 
         $this->assertEquals(
             $response->getStatusCode(), 200
